@@ -32,6 +32,12 @@ mp4dump  # this is useful for fragmented mp4
 ```bash
 # -select_streams v is filtering only video streams
 ffprobe -loglevel panic -select_streams v -show_entries "stream=start_pts,start_time,avg_frame_rate,r_frame_rate,codec_time_base" file.extension
+
+# logging/printing HDR metada information from FFmpeg
+# source: https://www.reddit.com/r/ffmpeg/comments/qidrc8/comment/i9lrj9u/?utm_source=reddit&utm_medium=web2x&context=3
+ffprobe -loglevel quiet -read_intervals "%+#2" -select_streams v:0 -show_entries side_data "input.mkv" | egrep -m 1 -A 10 'Mastering display metadata' | grep -v 'Mastering display metadata' >/tmp/variables.txt
+ffprobe -loglevel quiet -read_intervals "%+#2" -select_streams v:0 -show_entries side_data "input.mkv" | egrep -m 1 -A 2 'Content light level metadata' | grep -v 'Content light level metadata' >>/tmp/variables.txt
+cat /tmp/variables.txt
 ```
 ## Specific info from some frames
 
