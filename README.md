@@ -15,6 +15,9 @@ A set of command lines examples to help debugging video streaming files like mp4
 ```bash
 ffprobe -i file.extension
 
+# trace will output like a parser, it's useful for learning also check container structure such as fragmented mp4, mpegts programs...
+ffprobe -v trace file.extension
+
 mediainfo file.extension
 
 tsdump file.ts
