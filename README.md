@@ -55,3 +55,8 @@ ffprobe -loglevel panic -select_streams v -show_entries "frame=pkt_pts,pkt_pts_t
 mediainfo --Details=1 file.extension
 
 ```
+
+## Video/Audio/ClosedCaptions/Container/Codec ffmpeg samples
+
+https://samples.ffmpeg.org/
+
